@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Settlement
+    public class Settlement
     {
-        private string name {  get; set; }
-        private uint population {  get; set; }
-        private int hasCharger { get; set; }
-        double xCoordinate {  get; set; }
-        double yCoordinate { get; set; }
+        public string name {  get; set; }
+        public uint population {  get; set; }
+        public int hasCharger { get; set; }
+        public float xCoordinate {  get; set; }
+        public float yCoordinate { get; set; }
         public Settlement(string line)
         {
             string[] lines = line.Split(';');
             this.name = lines[0];
             this.population = uint.Parse(lines[1]);
             this.hasCharger = int.Parse(lines[2]);
-            this.xCoordinate = double.Parse(lines[3]);
-            this.yCoordinate = double.Parse(lines[4]);
+            this.xCoordinate = float.Parse(lines[3]);
+            this.yCoordinate = float.Parse(lines[4]);
         }
     }
 }

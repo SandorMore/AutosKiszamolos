@@ -22,6 +22,10 @@ namespace ConsoleApp1
         }
         static bool LookForWay(float fuel, Settlement[] settlements)
         {
+            for(int  i = 0; i < settlements.Length; ++i)
+            {
+                Vector2 currentSett = new Vector2(settlements[i].xCoordinate, settlements[i].yCoordinate);
+            }
             return false;
         }
     }
