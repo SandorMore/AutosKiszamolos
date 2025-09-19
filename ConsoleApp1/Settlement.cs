@@ -9,11 +9,11 @@ namespace ConsoleApp1
 {
     public class Settlement
     {
-        public string name {  get; set; }
-        public uint population {  get; set; }
-        public int hasCharger { get; set; }
-        public float xCoordinate {  get; set; }
-        public float yCoordinate { get; set; }
+        string name;
+        uint population;
+        int hasCharger;
+        float xCoordinate;
+        float yCoordinate;
         public Settlement(string line)
         {
             string[] lines = line.Split(';');
@@ -23,5 +23,11 @@ namespace ConsoleApp1
             this.xCoordinate = float.Parse(lines[3]);
             this.yCoordinate = float.Parse(lines[4]);
         }
+
+        public string Name { get => name; set => name = value; }
+        public uint Population { get => population; set => population = value; }
+        public int HasCharger { get => hasCharger; set => hasCharger = value; }
+        public float XCoordinate { get => xCoordinate; set => xCoordinate = value; }
+        public float YCoordinate { get => yCoordinate; set => yCoordinate = value; }
     }
 }

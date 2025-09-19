@@ -22,9 +22,51 @@ namespace ConsoleApp1
         }
         static bool LookForWay(float fuel, Settlement[] settlements)
         {
-            for(int  i = 0; i < settlements.Length; ++i)
+            //O(n^2) megoldas nem a leghatekonyabb
+            ref Settlement startSettlement = ref settlements[0];
+
+            for (int  i = 0; i < settlements.Length; ++i)
             {
-                Vector2 currentSett = new Vector2(settlements[i].xCoordinate, settlements[i].yCoordinate);
+                for(int j = i + 1; j < settlements.Length; ++j)
+                {
+                    Vector2 currentSett = new Vector2(settlements[i].XCoordinate, settlements[i].YCoordinate);
+                    Vector2 nextSett = new Vector2(settlements[j].XCoordinate, settlements[j].YCoordinate);
+
+                    if(Vector2.Distance(currentSett, nextSett) <= fuel && settlements[j].HasCharger == 1)
+                    {
+                        if (j == settlements.Length - 1)
+                            return true;
+                        else
+                            i = j - 1;
+                        break;
+                    }
+                }
+                
+            }
+            return false;
+        }
+        static bool LookForOtherWay(float fuel, Settlement[] settlements)
+        {
+            //O(n) megoldas
+
+            ref Settlement startSettlement = ref settlements[0];
+            int L = 0;
+            int R = settlements.Length - 1;
+            while (L < R)
+            {
+                Vector2 currentSett = new Vector2(settlements[L].XCoordinate, settlements[L].YCoordinate);
+                Vector2 nextSett = new Vector2(settlements[R].XCoordinate, settlements[R].YCoordinate);
+
+                if (Vector2.Distance(currentSett, nextSett) <= fuel && settlements[R].HasCharger == 1)
+                {
+                    if (R == settlements.Length - 1)
+                        return true;
+                    else
+                        L++;
+                }
+                else
+                    R--;
+
             }
             return false;
         }
